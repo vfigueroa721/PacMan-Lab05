@@ -116,4 +116,47 @@ function movePacman(e) {
                 }
                 break 
                 case "ArrowDown": 
-                // case 40: 
+                // case 40:
+                 if (
+                     pacmanCurrentIndex + width < width * width &&
+                     !squares[pacmanCurrentIndex + width].classList.contains("wall") &&
+                     !squares[pacmanCurrentIndex + width].classList.contains("ghost-lair")
+                 ) {
+                     pacmanCurrentIndex += width
+                 }
+                break
+            }
+    squares[pacmanCurrentIndex].classList.add("pac-man")
+    pacDotEaten()
+    powerPelletEaten()
+    checkForGameOver()
+    checkForWin()
+}
+document.addEventListener("keyup", movePacman)
+
+//what happens when you eat a pac-dot
+function pacDotEaten() {
+    if (squares[pacmanCurrentIndex].classList.contains("pac-dot")) {
+        score++
+        scoreDisplay.innerHTML = score
+        squares[pacmanCurrentIndex].classList.remove("pac-dot")
+    }
+}
+
+//what happens when you eat a power-pellet
+function powerPelletEaten() {
+    if (squares[pacmanCurrentIndex].classList.contains("power-pellet")) {
+        score += 10
+        scoreDisplay.innerHTML = score
+        ghosts.forEach(ghost => ghost.isScared = true)
+        setTimeout(unScareGhosts, 10000)
+        squares[pacmanCurrentIndex].classList.remove("power-pellet")
+    }
+}
+
+//make the ghosts stop flashing
+function unScareGhosts() {
+    ghosts.forEach(ghost => ghost.isScared = false)
+}
+
+
