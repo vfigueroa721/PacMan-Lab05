@@ -202,4 +202,53 @@ function moveGhost(ghost) {
         // if the ghost is currently scared 
         if (ghost.isScared) { 
             squares[ghost.currentIndex].classList.add("scared-ghost") 
-        } 
+        }
+         //if the ghost is currently scared and pacman is on it
+        if (ghost.isScared && squares[ghost.currentIndex].classList.contains("pac-man")) {
+            ghost.isScared = false
+            squares[ghost.currentIndex].classList.remove(ghost.className, "ghost", "scared-ghost")
+            ghost.currentIndex = ghost.startIndex
+            score += 100
+            scoreDisplay.innerHTML = score
+            squares[ghost.currentIndex].classList.add(ghost.className, "ghost")
+        }
+        checkForGameOver()
+    }, ghost.speed)
+}
+
+//check for a game over
+function checkForGameOver() {
+    if (
+        squares[pacmanCurrentIndex].classList.contains("ghost") &&
+        !squares[pacmanCurrentIndex].classList.contains("scared-ghost")) {
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
+        document.removeEventListener("keyup", movePacman)
+        setTimeout(function () {
+            alert("Game Over")
+        }, 500)
+    }
+}
+
+//check for a win - change the winning score to whatever you wish
+function checkForWin() {
+    if (score >= 274) {
+        ghosts.forEach(ghost => clearInterval(ghost.timerId))
+        document.removeEventListener("keyup", movePacman)
+        setTimeout(function () {
+            alert("You have WON!")
+        }, 500)
+    }
+}
+
+//start the game when enter is pressed
+function startGame(event) {
+    if (event.keyCode === 13) {
+        document.removeEventListener("keydown", startGame);
+        document.getElementById("start-screen").style.display = "none";
+        document.addEventListener("keyup", setPacmanVelocity);
+        movePacman();
+        ghosts.forEach((ghost) => moveGhost(ghost));
+    }
+}
+
+document.addEventListener("keydown", startGame);
