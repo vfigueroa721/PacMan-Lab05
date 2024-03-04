@@ -223,9 +223,10 @@ function checkForGameOver() {
         !squares[pacmanCurrentIndex].classList.contains("scared-ghost")) {
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener("keyup", movePacman)
+        document.getElementById("game-over-screen").style.display = "flex";
         setTimeout(function () {
-            alert("Game Over")
-        }, 500)
+        window.location.reload();
+      }, 3000);
     }
 }
 
