@@ -167,6 +167,41 @@
      height: 100vh;
      display:flex;
  }
+ #start-screen,
+#game-over-screen,
+#you-won-screen {
+  background-color: black;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+
+}
+
+#game-over-screen,
+#you-won-screen {
+  display: none;
+}
+
+#start-screen .pac-man,
+#start-screen .ghost {
+  display: none;
+ 
+}
+
+#game-over-screen .pac-man,
+#game-over-screen .ghost,
+#you-won-screen .pac-man,
+#you-won-screen .ghost {
+  display: none;
+}
+
 @keyframes colours {
   0% {
     color: yellow;
