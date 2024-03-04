@@ -235,9 +235,10 @@ function checkForWin() {
     if (score >= 274) {
         ghosts.forEach(ghost => clearInterval(ghost.timerId))
         document.removeEventListener("keyup", movePacman)
-        setTimeout(function () {
-            alert("You have WON!")
-        }, 500)
+        document.getElementById("you-won-screen").style.display = "flex";
+      setTimeout(function () {
+        window.location.reload();
+      }, 3000);
     }
 }
 })
