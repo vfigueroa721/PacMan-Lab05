@@ -76,6 +76,12 @@
  {
      border: 0px;
      border-radius:0px;
+     width: 80%;
+     height: 80%;
+     margin: auto;
+     border-top-right-radius: 20px;
+     border-top-left-radius: 20px;
+     clip-path: polygon(50% 0, 100% 0, 100% 100%, 82% 78%, 65% 100%, 49% 79%, 32% 100%, 16% 77%, 0 100%, 0 0);
  }
  .scared-ghost
  {
