@@ -3,6 +3,8 @@ This project has the game PacMan. In the classical game of PacMan, there is a ma
 # Files
 To create the game we have the html file which makes the body of the website. There is the style.css file which has the has the font size, the colors use, and the background of the website. The last file is the JavaScript file, which has all the game’s logic to play the game. 
 There is the deploy.sh that allows the website to be deploy on the browser if there is edits in the source files we refreash the screen to see the new edits.
+To see the files
+git clone [url] 
 # Play Game
 To play the game use the link https://cs.csub.edu/~vfigueroa/pacman/gameindex.html
 # Steps to Play
